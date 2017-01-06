@@ -38,7 +38,7 @@ main () {
 
 	while ((len = readLine(currLine)) != EOF) {
 		reverse(currLine, reversed);
-		printf("%s\n\n\n");
+		printf("%s\n\n\n", reversed);
 	}
 	return 0;
 }
