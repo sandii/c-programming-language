@@ -1,7 +1,8 @@
 #include <stdio.h>
 
-// print longest line and its length
-#define LIMIT 20
+// print lines surpass shreshold
+#define LIMIT 100
+#define SHRESHOLD 20
 
 int readLine (char line[]) {
 	int c = 0;
@@ -28,21 +29,19 @@ int copyLine (char src[], char dst[]) {
 		if (c == '\0') break;
 	}
 }
-
 main () {
-	int curLen = 0;
-	int maxLen = 0;
-	char curLine[LIMIT];
-	char maxLine[LIMIT];
+	int len = 0;
+	char currLine[LIMIT];
+	char rs[LIMIT][LIMIT];
+	char index = 0;
 
-	while (curLen = readLine(curLine)) {
-		if (curLen == EOF) break;
-		if (curLen <= maxLen) continue;
-		maxLen = curLen;
-		copyLine(curLine, maxLine);
+	while ((len = readLine(currLine)) != EOF) {
+		if (len <= SHRESHOLD) continue;
+		copyLine(currLine, rs[index]);
+		index++;
 	}
-	if (maxLen <= 0) return 0;
-	printf("longest line is: %s\n", maxLine);
-	printf("its length is: %d\n", maxLen);
+	for (int i = 0; i < index; i++) {
+		printf("%s", rs[i]);
+	}
 	return 0;
 }
