@@ -1,30 +1,26 @@
+// detab : tab to space
+
 #include <stdio.h>
 
-// detab : tab to space
-#define LIMIT 100
-#define TABSIZE 4
+#define TABWIDTH 6
 
 main () {
-	char text[LIMIT] = "you\tare\tmy\tfire\nthe\tone\tdesire\nyou\tpack\tthe\tmorning\n\0";
-	int count = 0;
-	for (int i = 0; i < LIMIT; i++) {
-		int c = text[i];
-		if (c == '\0') break;
+	int c = 0;
+	int col = 0;
+	while ((c = getchar()) != EOF) {
 		if (c == '\t') {
-			int num = TABSIZE - (count - 2) % TABSIZE;
-			for (int j = 0; j < num; j++) {
-				printf(" ");
+			int num = TABWIDTH - (col - 2) % TABWIDTH;
+			for (int i = 0; i < num; i++) {
+				putchar(' ');
 			}
-			count = 0;
+			col = 0;
 		} else if (c == '\n') {
-			printf("\n");
-			count = 0;
+			putchar(c);
+			col = 0;
 		} else {
-			printf("%c", c);
-			count++;
+			putchar(c);
+			col++;
 		}
 	}
-	// printf("%s\n", text);
-
 	return 0;
 }

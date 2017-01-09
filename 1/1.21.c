@@ -1,32 +1,38 @@
-/*空格串替换为最小数目的空格和制表符*/  
-#include<stdio.h>  
-#define TABINC 8  //   每隔TABINC个位置就会出现一个制表符   
-/*程序设计思想找出全部空格*/  
-int main() {
-  int c,nb,nt,pos;  
-  nb = 0;   //替换空格串的最少空格数   
-  nt = 0;   //替换空格串的最少制表符数   
-  for (pos = 1; (c = getchar()) != EOF; pos++) {  
-    if (c == ' ') {
-      if(pos%TABINC!=0)  //如何理解   
-        nb++;  
-      else {                  
-        nb = 0;      
-        nt++;  
-      }  
-    } else {  
-      for (; nt > 0; nt--) {
-        putchar('\t');  
-      }
-      if (c == '\t')
-        nb = 0;  
-              else  
-                  for(;nb>0;nb--)  
-                  putchar(' ');  
-            putchar(c);  
-            if(c=='\n')  
-               pos=0;  
-            else if(c=='\t')  
-               pos=pos+(TABINC-(pos-1)%TABINC-1);            
-            }         
- }  
+// entab : space to tab
+
+#include <stdio.h>
+
+#define TABWIDTH 8
+
+main() {
+    int c = 0;
+    int col = 0;
+    int space = 0;
+    int table = 0;
+    while ((c = getchar()) != EOF) {
+        // if space, don't output, but accumulate it
+        if (c == ' ') {
+            col++;
+            space++;
+            continue;
+        }
+        // if not space
+        // output accumulated spaces as '\t' and ' '
+        if (space == 1) {
+            putchar(' ');
+        }
+        if (space > 1) {
+            table = col / TABWIDTH - (col - space) / TABWIDTH;
+            space = col % TABWIDTH;
+            for (int i = 0; i < table; i++) putchar('\t');
+            for (int i = 0; i < space; i++) putchar(' ');
+        }
+        col++;
+        space = 0;
+        putchar(c);
+        // if \n, clear accumulation
+        if (c == '\n') {
+            col = 0;
+        }
+    }
+}
