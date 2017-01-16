@@ -1,17 +1,19 @@
 #include <stdio.h>
 #include <string.h>
 
-void reverse (char src[], char dst[]) {
-	int len = strlen(src);
-	dst[len] = '\0';
+// reverse all charactors in string
+
+void reverse (char s[]) {
+	int len = strlen(s);
 	for (int i = 0, j = len - 1; i <= j; i++, j--) {
-		dst[i] = src[j];
-		dst[j] = src[i];
+		int temp = s[i];
+		s[i] = s[j];
+		s[j] = temp;
 	}
 }
 
 main () {
-	char dst[100];
-	reverse("abcdefghi", dst);
-	printf("%s\n", dst);
+	char s[] = "abcdefghi";
+	reverse(s);
+	printf("%s\n", s);
 }
