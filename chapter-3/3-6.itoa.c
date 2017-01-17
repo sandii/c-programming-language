@@ -40,7 +40,7 @@ void itoa (int n, int minWidth, char s[]) {
 
 main () {
 	char dst[10];
-	itoa(123, 8, dst);		printf("%s\n", dst);
+	itoa(123, 8, dst);	printf("%s\n", dst);
 	itoa(-123, 8, dst);	printf("%s\n", dst);
-	itoa(53, 8, dst);		printf("%s\n", dst);
+	itoa(53, 8, dst);	printf("%s\n", dst);
 }

@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <math.h>
 
-#define NUMBER '0'
-#define STACK_SIZE 100
-#define BUFF_SIZE 100
+// a reverse polish calculator
+// add support for % and negative number
 
 // stack
+#define STACK_SIZE 100
 double stack[STACK_SIZE];
 int stackReader = 0;
 double pop () {
@@ -29,10 +30,11 @@ void push (double g) {
 
 
 // buffer
+#define BUFF_SIZE 100
 char buff[BUFF_SIZE];
 int buffReader = 0;
 int getch () {
-	if (buffReader) {
+	if (buffReader > 0) {
 		buffReader--;
 		return buff[buffReader];
 	} else {
@@ -49,18 +51,35 @@ void ungetch (char c) {
 }
 
 // read user input
+#define NUMBER '0'
 int getop (char s[]) {
 	int c = 0;
 
 	//skip spaces
-	while (isspace(c = getch())) {
+	while ((c = getch()) == ' ' || c == '\t') {
 		;
 	}
+
 	// not a number
-	if (!isdigit(c) && c != '.') return c;
+	if (!isdigit(c) && c != '.' && c != '-') return c;
+
+	// deal with '-' specificly
+	int i = 0;
+	if (c == '-') {
+		int next = getch();
+		if (isdigit(next)) {
+			s[i] = c;
+			i++;
+			s[i] = next;
+			i++;
+			c = getch();
+		} else {
+			ungetch(next);
+			return c;
+		}
+	}
 	
 	// deal with number
-	int i = 0;
 	while (isdigit(c)) {
 		s[i] = c;
 		i++;
@@ -87,9 +106,9 @@ int getop (char s[]) {
 
 main () {
 	char s[100];
-	int type;
+	int type = NUMBER;
+	double temp = 0.0;
 	while ((type = getop(s)) != EOF) {
-		if (type == '\n') printf("11");
 		switch (type) {
 			case NUMBER:
 				push(atof(s));
@@ -104,17 +123,28 @@ main () {
 				push(pop() * pop());
 				break;
 			case '/':
-				double divisor = pop();
-				if (divisor == 0.0) {
+				temp = pop();
+				if (temp == 0.0) {
 					printf("divisor cannot be zero..\n");
 				}
-				push(pop() / divisor);
+				push(pop() / temp);
+				break;
+			case '%':
+				temp = pop();
+				if (temp == 0) {
+					printf("modulus cannot be zero..\n");
+				}
+				push(fmod(pop(), temp));
 				break;
 			case '\n':
-				printf("\t%.8g\n", pop());
+				printf("%.8g\n", pop());
+				stackReader = 0;
+				buffReader = 0;
 				break;
 			default:
 				printf("input error..\n");
+				stackReader = 0;
+				buffReader = 0;
 		}
 	}
 }
