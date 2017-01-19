@@ -6,7 +6,7 @@ int getop (char s[]) {
 	int i = 0;
 
 	//skip spaces
-	while ((c = getch()) == ' ' || c == '\t') {
+	while ((c = getch(-1)) == ' ' || c == '\t') {
 		;
 	}
 
@@ -15,11 +15,11 @@ int getop (char s[]) {
 	if (isalpha(c)) {
 		while (isalpha(c)) {
 			s[i++] = c;
-			c = getch();
+			c = getch(-1);
 		}
 		s[i] = '\0';
 		if (c != EOF) {
-			ungetch(c);
+			getch(c);
 		}
 		return LETTER;
 	}
@@ -31,18 +31,18 @@ int getop (char s[]) {
 	// deal with '-' specificly
 	i = 0;
 	if (c == '-') {
-		int next = getch();
+		int next = getch(-1);
 		if (isdigit(next)) {
 			s[i++] = c;
 			s[i++] = next;
-			c = getch();
+			c = getch(-1);
 		} else {
-			ungetch(next);
+			getch(next);
 			return c;
 		}
 		s[i] = '\0';
 		if (c != EOF) {
-			ungetch(c);
+			getch(c);
 		}
 		return LETTER;
 	}
@@ -50,20 +50,20 @@ int getop (char s[]) {
 	// deal with number
 	while (isdigit(c)) {
 		s[i++] = c;
-		c = getch();
+		c = getch(-1);
 	}
 	if (c == '.') {
 		s[i++] = c;
-		c = getch();
+		c = getch(-1);
 	}
 	while (isdigit(c)) {
 		s[i++] = c;
-		c = getch();
+		c = getch(-1);
 	}
 	s[i] = '\0';
 
 	if (c != EOF) {
-		ungetch(c);
+		getch(c);
 	}
 	return NUMBER;
 }
