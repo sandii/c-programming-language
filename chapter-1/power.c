@@ -1,3 +1,10 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 6, 2017
+*
+* power
+*/
+
 #include <stdio.h>
 
 int power (int base, int n) {

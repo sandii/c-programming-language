@@ -1,6 +1,12 @@
-#include <stdio.h>
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 5, 2017
+*
+* count \t, \n and spaces
+*/
 
-// count \t, \n and space
+#include <stdio.h>
+ 
 main () {
 	int c = 0;
 	int spaceNum = 0;

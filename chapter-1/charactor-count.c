@@ -1,6 +1,12 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 4, 2017
+*
+* count digit 1-9, white space and other charactors
+*/
+
 #include <stdio.h>
 
-// count digit 1-9, white space and other charactors
 main () {
 	int c = 0;
 	int spaceNum = 0;

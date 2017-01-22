@@ -1,6 +1,12 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 5, 2017
+*
+* output every word in a new line
+*/
+
 #include <stdio.h>
 
-// output every word in a new line
 #define IN  1
 #define OUT 0
 

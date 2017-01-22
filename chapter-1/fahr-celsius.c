@@ -1,3 +1,10 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 4, 2017
+*
+* fahrenheit to celsius
+*/
+
 #include <stdio.h>
 
 main () {

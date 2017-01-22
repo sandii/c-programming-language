@@ -1,7 +1,13 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 5, 2017
+*
+* output the input
+* merge multi-spaces into one
+*/
+
 #include <stdio.h>
 
-// output the input
-// merge multi-spaces into one 
 main () {
 	int last = 0;
 	int curr = 0;

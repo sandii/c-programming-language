@@ -1,7 +1,13 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 5, 2017
+*
+* output the input
+* emphasize \t \b and \
+*/
+
 #include <stdio.h>
 
-// output the input
-// emphasize \t \b and \
 main () {
 	int c = 0;
 	int o = 0;

@@ -1,6 +1,12 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 13, 2017
+*
+* reverse string
+*/ 
+
 #include <stdio.h>
 
-// reverse string
 #define LIMIT 100
 
 int readLine (char line[]) {

@@ -1,4 +1,9 @@
-// detab : tab to space
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 13, 2017
+*
+* tab to space
+*/ 
 
 #include <stdio.h>
 

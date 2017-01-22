@@ -1,6 +1,12 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 6, 2017
+*
+* print longest line and its length
+*/
+
 #include <stdio.h>
 
-// print longest line and its length
 #define LIMIT 20
 
 int readLine (char line[]) {

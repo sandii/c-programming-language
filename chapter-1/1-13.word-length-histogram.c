@@ -1,6 +1,12 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 6, 2017
+*
+* count words length, print histogram
+*/
+
 #include <stdio.h>
 
-// count words length, print histogram
 #define IN  1
 #define OUT 0
 

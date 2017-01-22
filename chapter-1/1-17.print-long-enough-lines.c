@@ -1,8 +1,14 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 6, 2017
+*
+* print long enough lines
+*/
+
 #include <stdio.h>
 
-// remove \t and white space at lines end
-// remove lines that only contain \t and white space
 #define LIMIT 100
+#define SHRESHOLD 20
 
 int readLine (char line[]) {
 	int c = 0;
@@ -22,18 +28,6 @@ int readLine (char line[]) {
 		}
 	}
 }
-int filterSpace (char line[], int len) {
-	if (len <= 1) return len;
-	int i = len - 2;
-	for (; i >= 0; i--) {
-		if (line[i] != '\t' && line[i] != ' ') {
-			line[i + 1] = '\n';
-			break;
-		}
-		line[i] = '\0';
-	}
-	return i + 2;
-}
 int copyLine (char src[], char dst[]) {
 	for (int i = 0; i < LIMIT; i++) {
 		int c = src[i];
@@ -48,12 +42,10 @@ main () {
 	char index = 0;
 
 	while ((len = readLine(currLine)) != EOF) {
-		len = filterSpace(currLine, len);
-		if (len <= 1) continue;
+		if (len <= SHRESHOLD) continue;
 		copyLine(currLine, rs[index]);
 		index++;
 	}
-	printf("\n\n");
 	for (int i = 0; i < index; i++) {
 		printf("%s", rs[i]);
 	}

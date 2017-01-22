@@ -1,6 +1,12 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 6, 2017
+*
+* count charactors, print histogram
+*/
+
 #include <stdio.h>
 
-// count charactors, print histogram
 #define LEN 40
 
 main () {
