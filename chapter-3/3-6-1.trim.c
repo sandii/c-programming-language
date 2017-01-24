@@ -1,7 +1,12 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 17, 2017
+*
+* trim string
+*/
+
 #include <stdio.h>
 #include <string.h>
-
-// trim string
 
 void trim (char s[]) {
 	int len = strlen(s);

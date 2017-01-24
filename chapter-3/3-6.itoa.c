@@ -1,8 +1,13 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 18, 2017
+*
+* convert int to string, with minimal width
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-// int => string, with minimal width
 
 void reverse (char s[]) {
 	int len = strlen(s);

@@ -1,3 +1,10 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 16, 2017
+*
+* binary search
+*/
+
 #include <stdio.h>
 
 int _binsearch (int x, int arr[], int len) {

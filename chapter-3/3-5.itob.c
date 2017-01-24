@@ -1,8 +1,13 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 17, 2017
+*
+* convert int to string, for specific base
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-// int => string, for specific base
 
 void reverse (char s[]) {
 	int len = strlen(s);

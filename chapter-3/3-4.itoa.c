@@ -1,8 +1,14 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 17, 2017
+*
+* convert int to string
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-// int => string
 
 void reverse (char s[]) {
 	int len = strlen(s);

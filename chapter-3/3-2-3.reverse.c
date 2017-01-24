@@ -1,7 +1,12 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 17, 2017
+*
+* reverse string
+*/
+
 #include <stdio.h>
 #include <string.h>
-
-// reverse all charactors in string
 
 void reverse (char s[]) {
 	int len = strlen(s);

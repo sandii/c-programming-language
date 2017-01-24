@@ -1,6 +1,13 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 16, 2017
+*
+* convert a-c to abc
+*/
+
 #include <stdio.h>
 
-// a-c => abc
+
 
 void expand (char src[], char dst[]) {
 	int reader = 0;

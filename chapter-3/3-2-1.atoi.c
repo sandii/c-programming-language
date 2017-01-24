@@ -1,7 +1,12 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 16, 2017
+*
+* convert string to int 
+*/
+
 #include <stdio.h>
 #include <ctype.h>
-
-// string => int
 
 int atoi (char s[]) {
 	int i = 0;

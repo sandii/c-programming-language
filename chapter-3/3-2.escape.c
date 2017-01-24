@@ -1,3 +1,10 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 16, 2017
+*
+* escape or unescape \n and \t
+*/
+
 #include <stdio.h>
 
 void escape (char src[], char dst[]) {
