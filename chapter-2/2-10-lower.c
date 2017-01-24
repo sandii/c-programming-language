@@ -1,3 +1,10 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 13, 2017
+*
+* convert uppercase to lowercase
+*/
+
 #include <stdio.h>
 
 int delta = 'a' - 'A';

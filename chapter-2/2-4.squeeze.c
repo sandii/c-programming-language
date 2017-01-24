@@ -1,3 +1,10 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 13, 2017
+*
+* remove specific charactors from string
+*/
+
 #include <stdio.h>
 
 void squeeze (char src[], char ban[]) {

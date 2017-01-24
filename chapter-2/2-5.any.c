@@ -1,3 +1,10 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 13, 2017
+*
+* substring's position in string, return -1 if not exist
+*/
+
 #include <stdio.h>
 
 int any (char src[], char reg[]) {
