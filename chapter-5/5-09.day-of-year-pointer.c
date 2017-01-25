@@ -4,6 +4,7 @@
 *
 * convert year-month-date to nth day of year
 * then reverse it
+* user pointer instead of array
 */
 
 #include <stdio.h>
@@ -23,11 +24,11 @@ static char daytab[2][13] = {
 int dayOfYear (int y, int m, int d) {
 	int leap = isLeapYear(y) ? 1 : 0;
 	if (m < 1 || m > 12 || d < 1) return -1;
-	int maxd = daytab[leap][m];
+	int maxd = *(*(daytab + leap) + m);
 	if (d > maxd) return -1;
 
 	for (int i = 1; i < m; i++) {
-		d += daytab[leap][i];
+		d += *(*(daytab + leap) + i);
 	}
 	return d;
 }
@@ -40,10 +41,12 @@ int getMonthDate (int y, int nth, int* mp, int* dp) {
 
 	int m = 1;
 	int d = nth;
-	while (d > daytab[leap][m]) {
-		d -= daytab[leap][m];
+	int dayNum = 0;
+	do {
+		dayNum = *(*(daytab + leap) + m);
+		d -= dayNum + m;
 		m++;
-	}
+	} while (d > dayNum);
 	*mp = m;
 	*dp = d;
 	return 0;
