@@ -19,25 +19,28 @@ main() {
         if (c == ' ') {
             col++;
             space++;
-            continue;
-        }
+
+        // if \n, clear accumulation
+        } else if (c == '\n') {
+            col = 0;
+            space = 0;
+            putchar(c);
+
         // if not space
         // output accumulated spaces as '\t' and ' '
-        if (space == 1) {
-            putchar(' ');
-        }
-        if (space > 1) {
-            table = col / TABWIDTH - (col - space) / TABWIDTH;
-            space = col % TABWIDTH;
-            for (int i = 0; i < table; i++) putchar('\t');
-            for (int i = 0; i < space; i++) putchar(' ');
-        }
-        col++;
-        space = 0;
-        putchar(c);
-        // if \n, clear accumulation
-        if (c == '\n') {
-            col = 0;
+        } else {
+            if (space == 1) {
+                putchar(' ');
+            }
+            if (space > 1) {
+                table = col / TABWIDTH - (col - space) / TABWIDTH;
+                space = table == 0 ? space : col % TABWIDTH;
+                for (int i = 0; i < table; i++) putchar('\t');
+                for (int i = 0; i < space; i++) putchar(' ');
+            }
+            col++;
+            space = 0;
+            putchar(c);
         }
     }
 }
