@@ -1,42 +1,46 @@
 /*
 * author: chenzhi <chenzhibupt@qq.com>
-* data: Feb 5, 2017
+* data: Feb 6, 2017
 *
-* convert tab to space, with specified tab-width
+* convert tab to space
+* since colomn m, with specified tab-width n
+* usage: 5-12-1.detab.o -m +n
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <ctype.h>
 
+#define DEFAULT_TABWIDTH 8
 
-int getArg (int argc, char* argv[]) {
-	int arg = 0;
-
-	// no argument
-	if (argc == 1) return arg;
-	
-	// wrong argument format
-	argv++;
-	char* p = *argv;
-	if (*p != '-') return arg;
-	
-	// get number
-	while (isdigit(*++p)) {
-		arg = arg * 10 + (*p - '0');
+void getArg (int argc, char* argv[], int* mp, int* np) {
+	for (int i = 1; i < argc; i++) {
+		char* p = argv[i];
+		if (*p == '-') *mp = atoi(++p);
+		if (*p == '+') *np = atoi(++p);
 	}
-	return arg;
 }
 
-void run (int tabWidth) {
+void detab (int* colp, int m, int n) {
+	int col = *colp <= m 
+		? *colp 
+		: *colp - m;
+	int tabWidth = *colp <= m
+		? DEFAULT_TABWIDTH
+		: n;
+	int space = tabWidth - col % tabWidth;
+	for (int i = 0; i < space; i++) {
+		putchar(' ');
+	}
+	*colp += space;
+}
+
+void run (int m, int n) {
 	int c = 0;
 	int col = 0;
 	while ((c = getchar()) != EOF) {
 		if (c == '\t') {
-			int space = tabWidth - col % tabWidth;
-			for (int i = 0; i < space; i++) {
-				putchar(' ');
-			}
-			col = 0;
+			detab(&col, m, n);
 		} else if (c == '\n') {
 			putchar(c);
 			col = 0;
@@ -48,7 +52,9 @@ void run (int tabWidth) {
 }
 
 main (int argc, char* argv[]) {
-	int arg = getArg(argc, argv);
-	run(arg ? arg : 8);
+	int m = 0;
+	int n = DEFAULT_TABWIDTH;
+	getArg(argc, argv, &m, &n);
+	run(m, n);
 }
 
