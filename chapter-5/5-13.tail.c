@@ -52,23 +52,28 @@ void output (int n) {
 	}
 }
 
-main (int argc, char* argv[]) {
+int getArg (int argc, char *argv[]) {
 	if (argc == 1) {
 		printf("Usage: print last n lines\n");
-		return 1;
+		return -1;
 	}
 	char* p = *++argv;
 	if (*p != '-') {
 		printf("Usage: expect a param -n, n should be integer\n");
-		return 1;
+		return -1;
 	}
 	int n = 0;
 	while (isdigit(*++p)) {
 		n = n * 10 + (*p - '0');
 	}
-	n = n ? n : 10;
+	return n;
+} 
+
+main (int argc, char* argv[]) {
+	int n = getArg(argc, argv);
+	if (n == -1) return 1;
 	input();
-	output(n);
+	output(n ? n : 10);
 	return 0;
 }
 
