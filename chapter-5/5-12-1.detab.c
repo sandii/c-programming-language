@@ -3,13 +3,12 @@
 * data: Feb 6, 2017
 *
 * convert tab to space
-* since colomn m, with specified tab-width n
+* since column m, with specified tab-width n
 * usage: 5-12-1.detab.o -m +n
 */
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 
 #define DEFAULT_TABWIDTH 8
 
