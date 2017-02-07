@@ -5,14 +5,26 @@
 * sort strings
 * -n for numberic
 * -r for reverse
+* -f for case insensitive
 */
 
 #include <stdio.h>
-#include <stdlib.h>	// atof
-#include <string.h>	// strchr strcmp
+#include <stdlib.h>	// atof abs
+#include <string.h>	// strchr
 
-int (*compare)(char*, char*) = (int (*)(char*, char*))strcmp;
+bool isNumberic = false;
 bool isReverse = false;
+bool isCaseInsensitive = false;
+
+int scmp (char* a, char* b) {
+	do {
+		if (*a == *b) continue;
+		if (isCaseInsensitive && abs(*a - *b) == 'a' - 'A') continue;
+		if (*a > *b) return 1;
+		if (*a < *b) return -1;
+	} while (*++a && *++b);
+	return 0;
+}
 
 int ncmp (char* a, char* b) {
 	double _a = atof(a);
@@ -27,8 +39,10 @@ void getArg (int argc, char* argv[]) {
 	char** p = argv;
 	p++;
 	if (**p != '-') return;
-	if (strchr(*p, 'n')) compare = ncmp;
+	if (strchr(*p, 'n')) isNumberic = true;
 	if (strchr(*p, 'r')) isReverse  = true;
+	if (strchr(*p, 'f')) isCaseInsensitive  = true;
+	printf("%d\n", isCaseInsensitive);
 }
 
 #define MAX_CHAR_NUM 1000
@@ -83,8 +97,12 @@ void qsort (int left, int right) {
 	swap(left, pivot);
 	pivot = left;
 	for (int i = left + 1; i <= right; i++) {
-		int rs = compare(ln[left], ln[i]);
-		if ( (rs > 0 && !isReverse) || (rs < 0 && isReverse) ) {
+		char* a = ln[left];
+		char* b = ln[i];
+
+		int rs = isNumberic ? ncmp(a, b) : scmp(a, b);
+		rs = isReverse ? -rs : rs;
+		if (rs > 0) {
 			pivot++;
 			swap(pivot, i);
 		}
