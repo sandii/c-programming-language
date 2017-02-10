@@ -60,7 +60,8 @@ int getword () {
 				while (c = getch()) {
 					if (c == EOF) return c;
 					readyToEnd = c == '*';
-					if (c == '/' && readyToEnd) break;
+					if ((c = getch()) == '/' && readyToEnd) break;
+					ungetch(c);
 				}
 			}
 		}
