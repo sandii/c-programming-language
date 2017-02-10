@@ -1,6 +1,6 @@
 /*
 * author: chenzhi <chenzhibupt@qq.com>
-* data: Feb 9, 2017
+* data: Feb 10, 2017
 *
 * I. print varibles c program source code
 * - ignore comments

@@ -1,6 +1,6 @@
 /*
 * author: chenzhi <chenzhibupt@qq.com>
-* data: Feb 9, 2017
+* data: Feb 10, 2017
 *
 * print words and their line number list
 */
@@ -11,7 +11,7 @@
 #include <string.h> // strcmp strlen strcpy
 
 #define MAX_WORD_LEN 100
-#define MAX_LINE 10
+#define MAX_LINE 200
 char word [MAX_WORD_LEN];
 int line = 1;
 
@@ -68,8 +68,18 @@ char* ignoreList[] = {
 	};
 #define IGNORE_NUM sizeof ignoreList / sizeof ignoreList[0]
 bool ignore (char* wp) {
-	for (int i = 0; i < IGNORE_NUM; i++) {
-		if(strcmp(wp, ignoreList[i]) == 0) return true;
+	int low = 0;
+	int high = IGNORE_NUM;
+	while (low < high) {
+		int mid = (low + high) / 2;
+		int rs = strcmp(wp, ignoreList[mid]); 
+		if (rs < 0) {
+			high = mid;
+		} else if (rs > 0) {
+			low = mid + 1;
+		} else {
+			return true;
+		}
 	}
 	return false;
 }
@@ -112,7 +122,7 @@ void printTree (struct tnode* p) {
 	printf("%12s   - ", p -> word);
 	for (int i = 1; i < MAX_LINE + 1; i++) {
 		if (!p -> line[i]) continue;
-		printf("%3d", i);
+		printf("%4d", i);
 	}
 	printf("\n");
 	printTree(p -> right);
