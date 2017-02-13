@@ -13,29 +13,58 @@
 #include <string.h>	// strstr strlen
 #include <ctype.h>
 
-#define MAX_LINE_LENGTH 20
-#define MAX_NUM_LENGTH 20
+#define MAX_LINE_LEN 30
+#define MAX_BUFF_LEN 20
+#define TAB_SIZE 4
 
-char buff[MAX_BUFF_LENGTH];
-int buffLen = 0;
+char buff[MAX_BUFF_LEN];
+int buffReader = -1;
 int getch () {
-	return buffLen ? buff[--buffLen] : getchar();
+	return buffReader == -1 ? getchar() : buff[buffReader--];
+}
+void swap (int i, int j) {
+	if (i == j) return;
+	int temp = buff[i];
+	buff[i] = buff[j];
+	buff[j] = temp;
 }
 void reverseBuff () {
-	
+	for (int i = 0; i <= buffReader / 2; i++) {
+		swap(i, buffReader - i);
+	}
 }
 
+
 main (int argc, char* argv[]) {
-	char form[] = strstr(argv[1], "-x") == NULL ? "0%o" : "0x%x";
-	
+	char oct[] = "0%o";
+	char dex[] = "0x%x";
+	char* formp = argc > 1 && strstr(argv[1], "-x") == NULL 
+		? oct 
+		: dex;
 
 	int c;
 	int col = 0;
 	while ((c = getch()) != EOF) {
 		if (!isgraph(c) && !isspace(c)) {
-			buffLen = sprintf(buff, form, c);
+			buffReader = sprintf(buff, formp, c) - 1;
 			reverseBuff();
+			continue;
 		}
-		putchar(c);
+
+		if (c == '\n' || col >= MAX_LINE_LEN) {
+			putchar('\n');
+			col = 0;
+		} else if (c == ' ' && col == 0) {
+			continue;
+		} else if (c == '\t') {
+			int num = TAB_SIZE - col % TAB_SIZE;
+			buffReader = num - 1;
+			for (int i = 0; i <= buffReader; i++) {
+				buff[i] = ' ';
+			}
+		} else {
+			putchar(c);
+			col++;
+		}		
 	}
 }
