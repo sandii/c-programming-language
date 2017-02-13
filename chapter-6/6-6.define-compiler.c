@@ -1,6 +1,6 @@
 /*
 * author: chenzhi <chenzhibupt@qq.com>
-* data: Feb 10, 2017
+* data: Feb 13, 2017
 *
 * compile #define
 */
@@ -13,7 +13,7 @@
 #define MAX_WORD_LEN 100
 char word [MAX_WORD_LEN];
 
-int buff;
+int buff = -1;
 int getch () {
 	if (buff == -1) {
 		return getchar();
@@ -31,7 +31,7 @@ int getword () {
 	char* wp = word;
 	int c;
 
-	while (!isalnum(c = getch()) && c != '_') {
+	while (c = getch()) {
 		if (c == EOF) return c;
 
 		// string constant
@@ -39,6 +39,7 @@ int getword () {
 			while ((c = getch()) != '"') {
 				if (c == EOF) return c;
 			}
+			c = getch();
 		}
 
 		// char constant
@@ -46,6 +47,7 @@ int getword () {
 			while ((c = getch()) != '\'') {
 				if (c == EOF) return c;
 			}
+			c = getch();
 		}
 
 		// comment
@@ -54,7 +56,8 @@ int getword () {
 			if ((c = getch()) == '/') {
 				while ((c = getch()) != '\n') {
 					if (c == EOF) return c;
-				}	
+				}
+				c = getch();
 			// /* ... */		
 			} else if (c == '*') {
 				bool readyToEnd = false;
@@ -63,35 +66,40 @@ int getword () {
 					readyToEnd = c == '*';
 					if (c == '/' && readyToEnd) break;
 				}
+				c = getch();
 			}
 		}
 
 		// # leading word
-		if (c == '#') {
-			c = getch(); ungetch(c);
-			if (!isalpha(c)) continue;
-			*wp = '#';
-			wp++;
-			while (isalpha(c = getch())) {
-				*wp = c;
-				wp++;
-				if (wp - word >= MAX_WORD_LEN - 1) break;
+		if (isalnum(c) || c == '#' || c == '_') {
+			if (c == '#') {
+				*wp++ = '#';
+				while (isalpha(c = getch())) {
+					*wp++ = c;
+					if (wp - word >= MAX_WORD_LEN - 1) break;
+				}
+			
+			// number
+			} else if (isdigit(c)) {
+				ungetch(c);
+				while (isdigit(c = getch())) {
+					*wp++ = c;
+					if (wp - word >= MAX_WORD_LEN - 1) break;
+				}
+			
+			// word
+			} else if (isalpha(c) || c == '_') {
+				ungetch(c);
+				while (isalnum(c = getch()) || c == '_') {
+					*wp++ = c;
+					if (wp - word >= MAX_WORD_LEN - 1) break;
+				}
 			}
 			ungetch(c);
 			*wp = '\0';
 			return word[0];
 		}
 	}
-
-	while (isalnum(c) || c == '_') {
-		*wp = c;
-		wp++;
-		if (wp - word >= MAX_WORD_LEN - 1) break;
-		c = getch();
-	}
-	ungetch(c);
-	*wp = '\0';
-	return word[0];
 }
 
 
