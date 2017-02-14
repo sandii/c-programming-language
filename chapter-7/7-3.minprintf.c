@@ -161,7 +161,6 @@ int minprintf (char* fmp, ...) {
 }
 
 main () {
-	// int n = minprintf("%s %10d, %.4f, %10.2f\n", "April", 10, -1988.0, 6.6666);
-	int n = minprintf("-%4d-\n", 10);
+	int n = minprintf("%s %10d, %.4f, %10.2f\n", "April", 10, -1988.0, 6.6666);
 	minprintf("%d\n", n);
 }
