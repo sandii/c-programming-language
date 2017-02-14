@@ -34,14 +34,7 @@ void reverseBuff () {
 	}
 }
 
-
-main (int argc, char* argv[]) {
-	char oct[] = "0%o";
-	char dex[] = "0x%x";
-	char* formp = argc > 1 && strstr(argv[1], "-x") == NULL 
-		? oct 
-		: dex;
-
+void print (char* formp) {
 	int c;
 	int col = 0;
 	while ((c = getch()) != EOF) {
@@ -67,4 +60,14 @@ main (int argc, char* argv[]) {
 			col++;
 		}		
 	}
+}
+
+
+main (int argc, char* argv[]) {
+	char oct[] = "0%o";
+	char dex[] = "0x%x";
+	char* formp = argc > 1 && strstr(argv[1], "-x") == NULL 
+		? oct 
+		: dex;
+	print(formp);
 }
