@@ -10,7 +10,6 @@
 */
 
 #include <stdio.h>
-#include <stdlib.h>	// exit
 #include <string.h>	// strstr strlen
 
 #define MAX_LINE_LEN 200
