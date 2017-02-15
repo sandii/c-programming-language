@@ -98,7 +98,7 @@ void adjustWidth (int n, char s[]) {
 
 	int reader = len;
 	int writer = n;
-	while (reader <= 0) {
+	while (reader >= 0) {
 		s[writer--] = s[reader--];
 	}
 	for (writer = 0; writer < n - len; writer++) {
@@ -157,6 +157,7 @@ int minprintf (char* fmp, ...) {
 				putchar(*wp); len++;
 		}
 	}
+	va_end(ap);
 	return len;
 }
 
