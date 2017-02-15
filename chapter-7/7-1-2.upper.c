@@ -2,7 +2,7 @@
 * author: chenzhi <chenzhibupt@qq.com>
 * data: Feb 13, 2017
 *
-* convert between lower-case and upper-case
+* convert charactors between lower-case and upper-case
 * according to argv[0]
 */
 

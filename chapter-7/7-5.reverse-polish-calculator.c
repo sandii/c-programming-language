@@ -1,6 +1,6 @@
 /*
 * author: chenzhi <chenzhibupt@qq.com>
-* data: Feb 14, 2017
+* data: Feb 15, 2017
 *
 * reverse polish calculator using scanf and sscanf
 */
