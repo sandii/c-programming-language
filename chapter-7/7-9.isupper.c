@@ -1,6 +1,6 @@
 /*
 * author: chenzhi <chenzhibupt@qq.com>
-* data: Feb 15, 2017
+* data: Feb 16, 2017
 *
 * judge character is uppercase or not,
 * - time-efficient plan

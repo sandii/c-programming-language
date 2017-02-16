@@ -1,15 +1,22 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 18, 2017
+*
+* a reverse polish calculator
+* add features:
+* 1. print stack top operant - @
+* 2. copy stack top operant - #
+* 3. swap two stack top operants - $
+* 4. clear stack - ^
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <math.h>
 #include <string.h>
 
-// a reverse polish calculator
-// add features that
-// 1. print stack top operant - @
-// 2. copy stack top operant - #
-// 3. swap two stack top operants - $
-// 4. clear stack - ^
+
 
 // stack
 #define STACK_SIZE 100

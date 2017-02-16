@@ -1,7 +1,13 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 17, 2017
+*
+* index of string b in string a's right side
+*/
+
+
 #include <stdio.h>
 #include <string.h>
-
-// index of string b in string a's right side
 
 int strindex (char a[], char b[]) {
 	int lenA = strlen(a);

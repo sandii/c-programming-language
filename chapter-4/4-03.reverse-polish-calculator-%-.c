@@ -1,10 +1,15 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 18, 2017
+*
+* a reverse polish calculator
+* add support for % and negative number
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <math.h>
-
-// a reverse polish calculator
-// add support for % and negative number
 
 // stack
 #define STACK_SIZE 100

@@ -1,3 +1,10 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 20, 2017
+*
+* tell whether string a end with string b 
+*/
+
 #include <stdio.h>
 #include <string.h>
 

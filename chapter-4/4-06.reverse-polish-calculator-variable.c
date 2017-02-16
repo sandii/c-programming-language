@@ -1,14 +1,19 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 18, 2017
+*
+* a reverse polish calculator
+* add a varible x to store lattest printed value
+* e.g.
+* 2 2 pow => 4
+* x 2 pow => 16
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <math.h>
 #include <string.h>
-
-// a reverse polish calculator
-// add a varible x to store lattest printed value
-// e.g.
-// 2 2 pow => 4
-// x 2 pow => 16
 
 // stack
 #define STACK_SIZE 100

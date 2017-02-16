@@ -1,3 +1,10 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 19, 2017
+*
+* quick sort
+*/
+
 #include <stdio.h>
 
 void swap (int a[], int i, int j) {

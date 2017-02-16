@@ -1,3 +1,10 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 20, 2017
+*
+* strcat
+*/
+
 #include <stdio.h>
 
 void strcat (char* s, char* t) {

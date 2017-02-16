@@ -1,3 +1,10 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 19, 2017
+*
+* get float from user input
+*/
+
 #include <stdio.h>
 #include <ctype.h>
 #include <math.h>

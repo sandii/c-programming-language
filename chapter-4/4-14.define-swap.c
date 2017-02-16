@@ -1,3 +1,10 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 19, 2017
+*
+* define function swap
+*/
+
 #include <stdio.h>
 
 #define swap(type, a, b) {type temp; temp = a; a = b; b = temp;}

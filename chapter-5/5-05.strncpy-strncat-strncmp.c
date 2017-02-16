@@ -1,3 +1,12 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 20, 2017
+*
+* - strncpy
+* - strncat
+* - strncmp
+*/
+
 #include <stdio.h>
 
 void strncpy (char* s, char* t, int n) {

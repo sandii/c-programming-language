@@ -1,11 +1,16 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 18, 2017
+*
+* a reverse polish calculator
+* add ungets function to unget string into stack
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <math.h>
 #include <string.h>
-
-// a reverse polish calculator
-// add ungets function to unget string into stack
 
 
 // stack

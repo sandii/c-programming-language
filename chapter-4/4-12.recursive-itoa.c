@@ -1,6 +1,11 @@
-#include <stdio.h>
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 19, 2017
+*
+* convert integer to string, recursively
+*/
 
-// int => string, recursively
+#include <stdio.h>
 
 int i = 0;
 

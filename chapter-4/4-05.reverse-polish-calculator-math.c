@@ -1,19 +1,24 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 18, 2017
+*
+* a reverse polish calculator
+* add features in math.h
+* - pow 
+* - sqrt 
+* - sin 
+* - exp
+*
+* e.g.
+* 2 2 pow => 4
+* 9 sqrt => 3
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <math.h>
 #include <string.h>
-
-// a reverse polish calculator
-// add features in math.h
-// pow 
-// sqrt 
-// sin 
-// exp
-//
-// e.g.
-// 2 2 pow => 4
-// 9 sqrt => 3
 
 // stack
 #define STACK_SIZE 100

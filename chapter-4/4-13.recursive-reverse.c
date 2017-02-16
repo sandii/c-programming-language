@@ -1,3 +1,10 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 19, 2017
+*
+* reverse string, recursively
+*/
+
 #include <stdio.h>
 #include <string.h>
 

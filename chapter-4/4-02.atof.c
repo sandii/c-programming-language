@@ -1,8 +1,13 @@
+/*
+* author: chenzhi <chenzhibupt@qq.com>
+* data: Jan 17, 2017
+*
+* convert string to float
+*/
+
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-
-// string => float
 
 float atof (char s[]) {
 	int len = strlen(s);
