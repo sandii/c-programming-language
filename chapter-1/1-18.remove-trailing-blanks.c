@@ -32,19 +32,17 @@ int filterSpace (char line[], int len) {
 	if (len <= 1) return len;
 	int i = len - 2;
 	for (; i >= 0; i--) {
-		if (line[i] != '\t' && line[i] != ' ') {
-			line[i + 1] = '\n';
-			break;
-		}
-		line[i] = '\0';
+		if (line[i] == '\t' || line[i] == ' ') continue;
+		line[i + 1] = '\n';
+		break;
 	}
+	line[i + 2] = '\0';
 	return i + 2;
 }
 int copyLine (char src[], char dst[]) {
 	for (int i = 0; i < LIMIT; i++) {
-		int c = src[i];
-		dst[i] = c;
-		if (c == '\0') break;
+		dst[i] = src[i];
+		if (dst[i] == '\0') break;
 	}
 }
 main () {

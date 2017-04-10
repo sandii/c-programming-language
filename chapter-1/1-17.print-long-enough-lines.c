@@ -30,9 +30,8 @@ int readLine (char line[]) {
 }
 int copyLine (char src[], char dst[]) {
 	for (int i = 0; i < LIMIT; i++) {
-		int c = src[i];
-		dst[i] = c;
-		if (c == '\0') break;
+		dst[i] = src[i];
+		if (dst[i] == '\0') break;
 	}
 }
 main () {

@@ -47,8 +47,7 @@ main () {
 		}
 		printf("\n");
 	}
-	printf("\n");
-	printf("\n");
+	printf("\n\n");
 	
 	//vertical
 	int max = 0;
