@@ -9,14 +9,13 @@
 
 int invert (int x, int p, int n) {
 	int mask = ~(~0 << n) << (p - n);	// 00001100
-	x = x & ~mask;						// remove target bits in x
-
-	int target = x & mask >> (p - n);	// get target bits from x
+	int target = x & mask;				// get target bits from x
 	int inverted = ~target & mask;		// invert target bits
-	return x & inverted;				// combine
+	x = x & ~mask;						// remove target bits in x
+	return x | inverted;				// combine
 }
 
 main () {
-	printf("%d\n", setbits(8, 4, 2));
-	printf("%d\n", setbits(15, 3, 3));
+	printf("%d\n", invert(8, 4, 2));
+	printf("%d\n", invert(15, 3, 3));
 }
