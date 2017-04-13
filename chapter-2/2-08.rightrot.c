@@ -8,12 +8,14 @@
 
 #include <stdio.h>
 
+int intsize = sizeof(int) * 8;
+
 int rightrot (int x, int n) {
-	int mask = ~(~0 << n);	// 00000011
-	int bits = x & mask;	// get moveout bits
-	bits = bits << (32 - n);// move bits to left side
-	x = x >> n;				// move x rightwards
-	return x | bits;		// combine
+	int mask = ~(~0 << n);			// 00000011
+	int bits = x & mask;			// get moveout bits
+	bits = bits << (intsize - n);	// move bits to left side
+	x = x >> n;						// move x rightwards
+	return x | bits;				// combine
 }
 
 main () {
