@@ -10,12 +10,13 @@
 int _binsearch (int x, int arr[], int len) {
 	int low = 0;
 	int high = len - 1;
-	while (low <= high) {
+	while (low < high) {
 		// printf("%d %d\n", low, high);
 		int mid = (low + high) / 2;
 		int v = arr[mid];
 		if (x < v) {
-			high = mid + 1;
+			high = mid;	
+			// because mid is a floor integer, we can't set "high = mid - 1"
 		} else if (x > v) {
 			low = mid + 1;
 		} else {
@@ -45,7 +46,7 @@ main() {
 	for (int i = 0; i < len; i++) {
 		a[i] = i * 3;
 	}
-	printf("%d\n", _binsearch(3, a, len));
+	printf("%d\n", _binsearch(0, a, len));
 	printf("\n\n\n");
-	printf("%d\n", binsearch(3, a, len));
+	printf("%d\n", binsearch(300, a, len));
 }

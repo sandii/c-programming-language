@@ -27,7 +27,7 @@ void expand (char src[], char dst[]) {
 			continue;
 		}
 
-		for (int curr = prev + 1; curr <= next; curr++) {
+		for (int curr = prev + 1; curr < next; curr++) {
 			dst[writer] = curr;
 			writer++;
 		}
